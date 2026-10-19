@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lwbaad"
+version = "0.5.0"
+description = "AAD v5 and self-improving algorithm search with selectable RSI starting policies"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dsh-meta = ["deepseek-harness-sdk==0.1.5rc1"]
+ale-v5-1 = ["ale-bench @ git+https://github.com/SakanaAI/ALE-Bench.git@3da9b12fb5d112dabb3af693d1a42031c95142bc"]
+
+[tool.setuptools.packages.find]
+include = ["aad*"]
+
+[tool.setuptools.package-data]
+aad = ["assets/*.md", "assets/*.ps1"]
