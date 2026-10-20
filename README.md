@@ -6,6 +6,7 @@ Algorithm search with LLM-generated programs and an optional self-improving sear
 |---|---|---|
 | **AAD v5** | A fixed evolutionary search policy with parallel candidate generation, mutation, crossover, and repair. | `python run_v5.py` |
 | **RSI** | An outer agent updates the search policy using public evaluation evidence. | `python run_rsi.py` |
+| **Greedy sequential BoN** | Generate N children from the current best parent; update after each complete batch. No meta-evolution. | `python run_greedy.py` |
 
 RSI supports two starting policies:
 
@@ -59,6 +60,11 @@ python run_v5.py run --task /path/to/public-task --run-dir runs/v5 --calls 100 -
 AAD v5 has a fixed search policy. Its implementation is isolated in [`v5/`](v5/README.md).
 
 ## RSI
+
+For the standalone parent-only greedy baseline, see
+[Greedy sequential best-of-N](docs/greedy_bon.md). Its default is N=4, with fresh
+initialization and a cache-inclusive 7.5M-token budget. This is distinct from the
+RSI `--from greedy` starting policy, which subsequently undergoes meta updates.
 
 Check the available options and validate your initial bank:
 
